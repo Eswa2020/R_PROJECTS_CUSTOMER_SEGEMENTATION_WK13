@@ -1,0 +1,207 @@
+---
+title: "eswa"
+author: "Esther_Wairimu_Kamau"
+date: "1/10/2021"
+output:
+  html_document:
+    df_print: paged
+  pdf_document: default
+  word_document: default
+editor_options:
+  chunk_output_type: console
+---
+
+```{r setup, include= TRUE}
+library(knitr)
+library(data.table)
+library(tidyverse)
+library(tigerstats)
+tinytex::install_tinytex() 
+opts_chunk$set(echo = FALSE)
+```
+
+# Defining the problem
+The research problem in this case is to find out individuals that are likely to click on a blog advert based on their characteristics which include; Age Daily Time spent on site Area of residence Internet Usage Gender Country of residence
+
+# Metric of Success
+
+The metric success of this project is to identify clients likely to click on the ad after performing intense data analysis(EDA).
+
+# Data Relevance
+The data provided by the client is from the performance of a previous blog advert on the same website. 
+The columns are as follows:
+* **Daily Time Spent on the site-Integer**
+* **Age of the individual browsing-Integer**
+* **Area of residence Internet Usage** 
+* **Gender of the browsing individual**
+* **Country of Residence**
+
+# Understanding the Context
+
+# Experimental Design
+*.Data Loading 
+*.Data cleaning for missing values and outliers
+*.Exploratory Data Analysis 
+*.Conclusion-Detecting the trend in behaviour.
+
+# Data Loading and exploring
+
+### Importing our dataset
+
+
+```{r}
+advertising =read.csv('http://bit.ly/IPAdvertisingData',header = TRUE, sep = ",",fileEncoding = "UTF-8-BOM")
+
+```
+
+### exploring the top of our data
+
+```{r}
+head(advertising)
+```
+
+
+### exploring the bottom of our data
+```{r}
+tail(advertising)
+```
+
+
+
+### Checking the class of the object "advertising"
+
+```{r}
+class(advertising)
+```
+
+
+### Checking the dimension of our dataset
+
+```{r}
+dim(advertising)
+```
+
+
+
+### Checking the structure of our data frame
+
+
+```{r}
+str(advertising)
+```
+
+
+
+### Getting the names of the columns we will be working with
+
+```{r}
+colnames(advertising)
+```
+
+
+
+# Data cleaning
+
+### Checking for duplicated values in our data set
+```{r}
+anyDuplicated(advertising)
+```
+
+
+### Checking if our dataset has any missing values
+
+```{r}
+sum(is.na(advertising))
+```
+
+### checking for missing values using case.complete function(just to confirm)
+
+```{r}
+# The function complete.cases() returns a logical vector indicating which cases are complete.
+# list rows of data that have missing values
+advertising[!complete.cases(advertising),]
+```
+
+
+### checking for outliers, we only need the numerical columns
+
+```{r}
+nums <- unlist(lapply(advertising, is.numeric)) 
+
+numerical_cols <- advertising[ ,nums]
+
+head(numerical_cols)
+```
+
+
+### checking for unique values
+
+```{r}
+unique_items <- unique(advertising)
+unique_items
+```
+
+
+
+# Plotting the boxplot to visualize the outliers in the dataset
+
+```{r}
+boxplot(numerical_cols[,-1], horizontal=TRUE, main="Ad campaign outliers")
+
+```
+
+
+# Univariate Analysis
+
+## For ease in analysis,we convert the data into a tibble
+
+```{r}
+library(tidyverse)
+
+my_data<-as_tibble(advertising)
+my_data
+
+```
+
+
+## Numerical data
+
+```{r}
+library(dplyr)
+Numeric=my_data %>% select_if(is.numeric)
+Numeric
+```
+
+
+## categorical data
+```{r}
+Categorical=my_data %>% select_if(is.character)
+Categorical
+```
+
+## find the descriptive statistics of the numerical data
+
+```{r}
+summary(Numeric)
+```
+
+# Bivariate and Multivariate Analysis
+
+## comparing covariances
+
+## checking correlations
+
+## Scatter Plots
+
+## pair plots
+
+# Observations
+
+# conclusions
+
+# Recommendations
+
+
+
+# 
+
