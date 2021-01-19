@@ -1063,4 +1063,10 @@ plot(hc3, cex = 0.6, hang = -1)
 ```
 
 ### 7.Conclusion
-It would be advised that the Kira Plastinina marketers should use the K Means clustering for Customer Segmentation since the clusters are clearer. * But, it would also be great to use DBSCAN for this study to be able to classify potential customers and also the outliers.
+It would be advised that the Kira Plastinina marketers should use the K Means clustering for Customer Segmentation since the clusters are clearer.
+
+*Also applying a dimension reduction technique would help 
+*Also the nbclust() if it would have worked would have given more accurate results.
+* But, it would also be great to use DBSCAN for this study to be able to classify potential customers and also the outliers.
+
+
